@@ -1,0 +1,22 @@
+{
+  "name": "4lambda-web",
+  "version": "3.1.0",
+  "private": true,
+  "description": "Website for 4Lambda — https://4lambda.io",
+  "type": "module",
+  "packageManager": "npm@10",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "husky": "^9.1.7",
+    "vite": "^6.3.0"
+  },
+  "author": "Russell Bunch <rusty@4lambda.io>",
+  "license": "MIT"
+}

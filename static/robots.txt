@@ -1,4 +1,0 @@
-Sitemap: http://www.4lambda.io/sitemap.xml
-
-User-Agent: *
-Disallow

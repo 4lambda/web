@@ -1,0 +1,4 @@
+Sitemap: https://4lambda.io/sitemap.xml
+
+User-Agent: *
+Allow: /
