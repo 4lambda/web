@@ -4,7 +4,7 @@
   "private": true,
   "description": "Website for 4Lambda — https://4lambda.io",
   "type": "module",
-  "packageManager": "npm@10",
+  "packageManager": "npm@11.9.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
