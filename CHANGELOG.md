@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.3](https://github.com/4lambda/web/compare/v4.0.2...v4.0.3) (2026-04-18)
+
+
+### Bug Fixes
+
+* use gcloud auth for Artifact Registry docker login ([79360f3](https://github.com/4lambda/web/commit/79360f303932a6df0cd11b54b796bc3239bf19d1))
+
 ## [4.0.2](https://github.com/4lambda/web/compare/v4.0.1...v4.0.2) (2026-04-18)
 
 
