@@ -22,4 +22,3 @@ updates:
       - "/apps/indexer"
     schedule:
       interval: "daily"
-    groups:
