@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.0.2](https://github.com/4lambda/web/compare/v4.0.1...v4.0.2) (2026-04-18)
+
+
+### Bug Fixes
+
+* deploy from Artifact Registry instead of GHCR ([bd70366](https://github.com/4lambda/web/commit/bd70366582d81e3809040219de1073b47f165399))
+* use full semver in packageManager field ([c677f5e](https://github.com/4lambda/web/commit/c677f5e522579b415b447e76cfebbd8ab21b19f7))
+
 ## [4.0.1](https://github.com/4lambda/web/compare/v4.0.0...v4.0.1) (2026-04-18)
 
 
