@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/4lambda/web/compare/v4.0.0...v4.0.1) (2026-04-18)
+
+
+### Miscellaneous Chores
+
+* **main:** release 4.0.1 ([a2d6447](https://github.com/4lambda/web/commit/a2d6447cf21b2fbe23a90d9940902205b08ea96c))
+
 ## [4.0.0](https://github.com/4lambda/web/compare/4lambda-web-v3.1.0...4lambda-web-v4.0.0) (2026-04-18)
 
 
