@@ -1,0 +1,271 @@
+/**
+ * 4Lambda Design System
+ * https://4lambda.io
+ *
+ * Color palette derived from the origami logo mark.
+ * Features: animated gradient mesh, glassmorphism, cursor glow, responsive type.
+ */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ── Design Tokens ── */
+:root {
+  /* Brand Colors (from logo) */
+  --color-blue: #3CA7D8;
+  --color-blue-light: #5CBDE8;
+  --color-amber: #E8972C;
+  --color-amber-light: #F0AD4E;
+  --color-grey: #BEB3AD;
+  --color-cream: #F5F0EB;
+
+  /* Background */
+  --bg-deep: #0F1117;
+  --bg-surface: #181B23;
+
+  /* Gradient Mesh Stops */
+  --mesh-1: #0F1117;
+  --mesh-2: #141830;
+  --mesh-3: #1A1520;
+  --mesh-4: #0D1A24;
+
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.3);
+
+  /* Typography */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 0.3s var(--ease-out-expo);
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  height: 100%;
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--color-cream);
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Animated Gradient Mesh ── */
+.gradient-mesh {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(60, 167, 216, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(232, 151, 44, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(60, 167, 216, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 30%, rgba(232, 151, 44, 0.06) 0%, transparent 50%),
+    linear-gradient(135deg, var(--mesh-1) 0%, var(--mesh-2) 25%, var(--mesh-3) 50%, var(--mesh-4) 75%, var(--mesh-1) 100%);
+  background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200%, 300% 300%;
+  animation: meshShift 20s ease-in-out infinite;
+}
+
+@keyframes meshShift {
+  0% {
+    background-position: 0% 50%, 100% 0%, 50% 100%, 0% 0%, 0% 0%;
+  }
+  25% {
+    background-position: 50% 0%, 50% 50%, 100% 50%, 50% 100%, 50% 50%;
+  }
+  50% {
+    background-position: 100% 50%, 0% 100%, 50% 0%, 100% 50%, 100% 100%;
+  }
+  75% {
+    background-position: 50% 100%, 50% 50%, 0% 50%, 50% 0%, 50% 50%;
+  }
+  100% {
+    background-position: 0% 50%, 100% 0%, 50% 100%, 0% 0%, 0% 0%;
+  }
+}
+
+/* ── Cursor Glow ── */
+.cursor-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  background: radial-gradient(
+    600px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(60, 167, 216, 0.08) 0%,
+    rgba(232, 151, 44, 0.04) 30%,
+    transparent 70%
+  );
+}
+
+.cursor-glow.active {
+  opacity: 1;
+}
+
+/* ── Grain Overlay ── */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px;
+}
+
+/* ── Hero Section ── */
+.hero {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: var(--space-lg);
+}
+
+/* ── Glass Card ── */
+.glass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-xl) var(--space-xl) var(--space-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  box-shadow:
+    0 8px 32px var(--glass-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  max-width: 420px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  animation: cardEntrance 1s var(--ease-out-expo) 0.3s forwards;
+}
+
+@keyframes cardEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Logo ── */
+.logo {
+  width: clamp(140px, 30vw, 220px);
+  height: auto;
+  filter: drop-shadow(0 4px 20px rgba(60, 167, 216, 0.15));
+  transition: filter var(--transition-base);
+}
+
+.glass-card:hover .logo {
+  filter: drop-shadow(0 4px 30px rgba(60, 167, 216, 0.25));
+}
+
+/* ── Typography ── */
+.tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-cream);
+  opacity: 0.85;
+  text-align: center;
+}
+
+.contact-link {
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  font-weight: 300;
+  color: var(--color-grey);
+  letter-spacing: 0.06em;
+  transition: color var(--transition-base);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 8px;
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+  color: var(--color-blue-light);
+}
+
+/* ── Footer ── */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  text-align: center;
+  padding: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgba(190, 179, 173, 0.4);
+  letter-spacing: 0.05em;
+}
+
+/* ── Accessibility: Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-mesh {
+    animation: none;
+  }
+
+  .glass-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .cursor-glow {
+    display: none;
+  }
+}
+
+/* ── Responsive Adjustments ── */
+@media (max-width: 480px) {
+  .glass-card {
+    padding: var(--space-lg) var(--space-md) var(--space-md);
+    border-radius: 20px;
+  }
+}

@@ -1,34 +1,23 @@
-FROM            ghcr.io/4lambda/python:3.8 AS base
+# ── Build Stage ──
+FROM    node:22-alpine AS build
 
-# Install system packages.
-RUN             yum install -y \
-                    pcre-devel-8.42-6.el8 \
-                    nginx-1:1.14.1-9.module_el8.0.0+1060+3ab382d3 \
-                    supervisor-4.2.2-1.el8 \
-                && yum clean -q all
+WORKDIR /app
+COPY    package*.json ./
+RUN     npm ci --production=false
+COPY    . .
+RUN     npm run build
 
-FROM base as app-base
-# Add system configuration and run files.
-COPY            nginx.conf /etc/nginx/
-COPY            supervisord.conf /etc/
-VOLUME          /var/log/nginx
+# ── Production Stage ──
+FROM    nginx:alpine
 
-# Setup the virtual env directory.
-# NOTE: Need to callout python3.8 because supervisor installs python36 which overwrites the python3 symlink
-RUN             python3.8 -m virtualenv --system-site-packages /env
-ENV             VIRTUAL_ENV=/env PATH=/env/bin:$PATH
+# Remove default nginx config and add ours
+RUN     rm /etc/nginx/conf.d/default.conf
+COPY    nginx.conf /etc/nginx/conf.d/default.conf
 
-# Add the web app, install it, and then compile assets.
-COPY            --chown=nginx:nginx . /app
-WORKDIR         /app
-RUN             . /env/bin/activate && \
-                python3 -m build && \
-                python3 -m pip --no-cache-dir install .[server] && \
-                for file in assets/scss/*; do \
-                    python3 -mscss "$file" > "static/css/$(basename ${file/\.scss/.css})"; \
-                done
+# Copy built static assets
+COPY    --from=build /app/dist /usr/share/nginx/html
 
-# Done; expose and run the app but allow circumvention of launch for poking around.
-EXPOSE          8080
-USER            nginx
-ENTRYPOINT      '/usr/bin/supervisord'
+EXPOSE  8080
+
+# Run nginx in foreground (required for Cloud Run)
+CMD     ["nginx", "-g", "daemon off;"]
