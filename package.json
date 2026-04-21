@@ -15,7 +15,7 @@
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "husky": "^9.1.7",
-    "vite": "^6.3.0"
+    "vite": "^8.0.9"
   },
   "author": "Russell Bunch <rusty@4lambda.io>",
   "license": "MIT"
