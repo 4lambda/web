@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.4](https://github.com/4lambda/web/compare/v4.0.3...v4.0.4) (2026-05-28)
+
+
+### Bug Fixes
+
+* bump fast-uri from 3.1.0 to 3.1.2 ([#16](https://github.com/4lambda/web/issues/16)) ([a1eaec6](https://github.com/4lambda/web/commit/a1eaec6c73b393851916fa2af4ea41a050a57acb))
+
 ## [4.0.3](https://github.com/4lambda/web/compare/v4.0.2...v4.0.3) (2026-04-18)
 
 
