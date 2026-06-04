@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.5](https://github.com/4lambda/web/compare/v4.0.4...v4.0.5) (2026-06-04)
+
+
+### Bug Fixes
+
+* bump @commitlint/config-conventional from 20.5.0 to 21.0.2 ([ef1dbd2](https://github.com/4lambda/web/commit/ef1dbd27fc335690eb4ca2ee0d079729c41bd41b))
+
 ## [4.0.4](https://github.com/4lambda/web/compare/v4.0.3...v4.0.4) (2026-05-28)
 
 
